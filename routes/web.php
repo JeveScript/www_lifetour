@@ -18,6 +18,16 @@ Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
+
+Route::resource('users', 'UsersController', ['only' => ['index', 'store', 'destroy', 'edit', 'update']]);
+Route::get('users/role', 'PermissionsController@index')->name('permission.index');
+Route::post('users/role', 'PermissionsController@roleStore')->name('permission.roleStore');
+Route::post('users/permission', 'PermissionsController@permissionStore')->name('permission.permissionStore');
+Route::post('users/roleandpermission', 'PermissionsController@roleAndPermission')->name('permission.roleAndPermission');
+
+
+
+
 // Registration Routes...
 if (config('common.allow_user_register')) {
     Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
