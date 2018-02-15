@@ -19,7 +19,7 @@ class UsersTableSeeder extends Seeder
 
         // 生成数据集合
         $users = factory(User::class)
-            ->times(10)
+            ->times(5)
             ->make();
 
         // 让隐藏字段可见，并将数据集合转换为数组
@@ -34,12 +34,14 @@ class UsersTableSeeder extends Seeder
         $jidian   = Role::create(['name' => 'jidian']);
 
         Permission::create(['name' => 'user']);
-        Permission::create(['name' => 'senke']);
-        Permission::create(['name' => 'jidian']);
+        Permission::create(['name' => 'senke_read']);
+        Permission::create(['name' => 'senke_edit']);
+        Permission::create(['name' => 'jidian_read']);
+        Permission::create(['name' => 'jidian_edit']);
 
-        $lifetour->givePermissionTo('user','senke','jidian');
-        $senke->givePermissionTo('senke');
-        $jidian->givePermissionTo('jidian');
+        $lifetour->givePermissionTo('user','senke_read', 'senke_edit','jidian_read','jidian_edit');
+        $senke->givePermissionTo('senke_read');
+        $jidian->givePermissionTo('jidian_read');
 
         // 单独处理第一个用户的数据
         $user = User::find(1);

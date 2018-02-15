@@ -25,6 +25,11 @@ Route::post('users/role', 'PermissionsController@roleStore')->name('permission.r
 Route::post('users/permission', 'PermissionsController@permissionStore')->name('permission.permissionStore');
 Route::post('users/roleandpermission', 'PermissionsController@roleAndPermission')->name('permission.roleAndPermission');
 
+Route::get('sem/senke', 'SemSenkeController@index')->name('sem.senke.index');
+Route::get('sem/senke/{sem}', 'SemSenkeController@show')->name('sem.senke.show');
+
+Route::get('sem/jidian', 'SemJidianController@index')->name('sem.jidian.index');
+Route::get('sem/jidian/{sem}', 'SemJidianController@show')->name('sem.jidian.show');
 
 
 
